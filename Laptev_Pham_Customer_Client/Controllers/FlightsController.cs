@@ -82,7 +82,7 @@ namespace Laptev_Pham_Customer_Client.Controllers
             }
             catch
             {
-                return View();
+                return View(); // hello
             }
         }
     }
