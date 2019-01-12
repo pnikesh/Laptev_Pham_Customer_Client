@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Laptev_Pham_Customer_Client.Models.Flight>
+
+@{
+    ViewBag.Title = "UpdateFlight";
+}
+
+<h2>Choose Flight to Update / Delete</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketPrice)
+        </td>
+        <td>
+            <form method="post" action="~/Home/ShowFlightDetailsToUpdate">
+                <input type="hidden" name="id" value="@item.ID" />
+                <input type="hidden" name="flightName" value="@item.FlightName" />
+                <input type="hidden" name="DepartureCity" value="@item.DepartureCity" />
+                <input type="hidden" name="ArrivalCity" value="@item.ArrivalCity" />
+                <input type="hidden" name="DepartureTime" value="@item.DepartureTime" />
+                <input type="hidden" name="ArrivalTime" value="@item.ArrivalTime" />
+                <input type="hidden" name="Direct" value="@item.Direct" />
+                <input type="hidden" name="TicketPrice" value="@item.TicketPrice" />
+
+                <button type="submit">UPDATE</button>
+            </form>
+
+            <form method="post" action="~/Home/DeleteFlight">
+                <input type="hidden" name="id" value="@item.ID" />
+                <input type="hidden" name="flightName" value="@item.FlightName" />
+                <input type="hidden" name="DepartureCity" value="@item.DepartureCity" />
+                <input type="hidden" name="ArrivalCity" value="@item.ArrivalCity" />
+                <input type="hidden" name="DepartureTime" value="@item.DepartureTime" />
+                <input type="hidden" name="ArrivalTime" value="@item.ArrivalTime" />
+                <input type="hidden" name="Direct" value="@item.Direct" />
+                <input type="hidden" name="TicketPrice" value="@item.TicketPrice" />
+
+                <button type="submit">DELETE</button>
+            </form>
+        </td>
+    </tr>
+}
+
+</table>

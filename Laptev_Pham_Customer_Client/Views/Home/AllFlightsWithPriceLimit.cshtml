@@ -1,0 +1,60 @@
+﻿@model Laptev_Pham_Customer_Client.Models.Flight
+
+@{
+    ViewBag.Title = "Here you can choose flight between cities with desired price";
+}
+
+<h3>Here you can choose flight between cities with desired price</h3>
+
+
+@using (Html.BeginForm("ShowAllFlightsWithPriceLimit", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepartureCity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DepartureCity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DepartureCity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ArrivalCity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ArrivalCity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArrivalCity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+      
+        <div class="col-md-10">
+            Enter maximum price you are ready to pay <input type="number" name="price" />
+            @Html.ValidationMessageFor(model => model.ArrivalCity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="SHOW" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
